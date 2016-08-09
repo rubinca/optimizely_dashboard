@@ -18,9 +18,9 @@ module.exports = function(passport) {
   router.post('/register', function(req, res) {
     // validation step
     console.log("HEY THIS WORKED")
-    if (!validateReq(req.body)) {
+    if (!validateReq(req.body) || req.body.adminCode !== process.env.ADMIN_CODE) {
       return res.render('register', {
-        error: "Passwords don't match."
+        error: "Passwords don't match or your code is wrong."
       });
     }
     var u = new User({
