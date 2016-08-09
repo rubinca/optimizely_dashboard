@@ -25,7 +25,7 @@
 
 <script>
   $('.submitButton').on("click", function(e) {
-    $.ajax('https://protected-gorge-12972.herokuapp.com/?name=' + e.target.id, {
+    $.ajax(window.location + "?name=" + e.target.id, {
       method: "POST",
       success: function() {
         console.log("WORKEDDDDDDD HAY")
