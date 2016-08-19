@@ -20,14 +20,19 @@
   {{/each}}
   <div>Tag Description: {{this.tagDescription}}</div>
   <div>Code: {{this.template}}</div>
-  <button type="button" id={{this.name}} class="submitButton btn btn-primary">Approve</button>
+  <label>Category</label>
+  <div class="submit-container">
+    <input class="category" placeholder="Insert Tag Category"></input>
+    <button type="button" id={{this.name}} class="submitButton btn btn-primary">Approve</button>
+  </div>
 {{/each}}
 
 <script>
   $('.submitButton').on("click", function(e) {
-    $.ajax(window.location + "?name=" + e.target.id, {
+    $.ajax(window.location + "?name=" + e.target.id + "&category=" + $(e.delegateTarget).parents(".submit-container").children(".category").val(), {
       method: "POST",
       success: function() {
+        location.reload(true);
       }
     })
   })
