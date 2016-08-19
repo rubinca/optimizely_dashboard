@@ -7,19 +7,29 @@ var rp = require('request-promise');
 var findOrCreate = require('mongoose-findorcreate')
 var Handlebars = require('handlebars')
 
-var utils = {
-  category: null,
-  approve: function(master) {
-    //change approved to true
-    master.approved = true;
-    master.category = this.category;
-    return master.save();
-  }
-}
+// var utils = {
+//   category: null,
+//   approve: function(master) {
+//     //change approved to true
+//     master.approved = true;
+//     master.category = this.category;
+//     return master.save();
+//   }
+// }
 
-class Utils {
-  constructor() {
-    return utils;
-  }
+// class Utils {
+//   constructor() {
+//     return utils;
+//   }
+// }
+
+function Utils(){
+    this.category = null;
+    this.approve = function(master) {
+      //change approved to true
+      master.approved = true;
+      master.category = this.category;
+      return master.save();
+    }
 }
 module.exports = Utils;
